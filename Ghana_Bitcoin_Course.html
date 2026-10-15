@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitcoin: The New Money | Block Wall Street Ghana Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1428; --panel:#111f3b; --panel2:#1a2b4f; --line:#2b4070;
+  --gold:#e3b64c; --gold-ink:#1a1405; --ink:#f5f0e3; --mute:#b4bfd6;
+  --good:#45c48a; --bad:#f06c64; --hl:rgba(227,182,76,.24);
+  --display:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  --body:'Barlow','Segoe UI',Arial,sans-serif;
+  --mono:'DM Mono',Consolas,'Courier New',monospace;
+}
+html[data-theme="light"]{
+  --bg:#f6f2e7; --panel:#ffffff; --panel2:#ede6d2; --line:#cfc5a8;
+  --gold:#8a6410; --gold-ink:#ffffff; --ink:#13203d; --mute:#4a5878;
+  --good:#12805a; --bad:#bd352d; --hl:rgba(138,100,16,.17);
+}
+*{box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;-webkit-text-size-adjust:100%}
+body.lock{overflow:hidden}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top::before{content:"";display:block;height:6px;background:linear-gradient(90deg,#ce1126 0 33.3%,#fcd116 33.3% 66.6%,#006b3f 66.6% 100%)}
+.top-row{display:flex;align-items:center;gap:.75rem;padding:.55rem 1rem;max-width:1100px;margin:0 auto;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.04em;color:var(--gold);white-space:nowrap;margin-right:auto}
+.tools{display:flex;gap:.4rem;align-items:center}
+.tbtn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.35rem .7rem;font-size:.85rem;font-weight:600}
+.tbtn:hover{border-color:var(--gold)}
+.tbtn.gl{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.pills{display:flex;gap:.35rem;overflow-x:auto;padding:0 1rem .55rem;max-width:1100px;margin:0 auto;scrollbar-width:thin}
+.pill{flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--mute);border-radius:999px;padding:.2rem .8rem;font-size:.82rem;font-weight:600}
+.pill.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.pill.done::after{content:" ✓";color:var(--good)}
+.pill.on.done::after{color:var(--gold-ink)}
+#prog{height:4px;background:var(--panel)}
+#prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .5s}
+main{max-width:760px;margin:0 auto;padding:2rem 1.1rem 5rem}
+.view{display:none}.view.on{display:block}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:.02em;line-height:1;margin:0}
+h1{font-size:clamp(2.8rem,9vw,4.8rem);color:var(--gold)}
+h2.st{font-size:clamp(2.6rem,8vw,3.8rem);color:var(--gold)}
+h3{font-family:var(--body);font-weight:700;font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .6rem;color:var(--ink)}
+p{margin:.8rem 0}
+ul,ol{padding-left:1.3rem}
+li{margin:.45rem 0}
+.sub{color:var(--mute);font-size:1.1rem;margin-top:.8rem}
+.meta{font-family:var(--mono);font-size:.82rem;color:var(--mute);margin:.7rem 0 1.4rem}
+.jump{display:inline-block;margin:.3rem 0 .6rem;font-weight:600;color:var(--gold)}
+a.term{color:var(--ink);text-decoration:underline dotted var(--gold);text-underline-offset:4px;text-decoration-thickness:2px;cursor:pointer;border-radius:4px}
+a.term.new{background:var(--hl);color:var(--gold);font-weight:700;text-decoration:underline solid var(--gold);padding:0 .22em}
+a.term:hover{background:var(--hl)}
+a.term.flash{animation:flash 1.6s ease 1}
+@keyframes flash{0%,60%{outline:3px solid var(--gold);background:var(--hl)}100%{outline:3px solid transparent}}
+.demo{background:var(--hl);color:var(--gold);font-weight:700;text-decoration:underline solid var(--gold);padding:0 .22em;border-radius:4px}
+.box{border-radius:12px;padding:1.1rem 1.3rem;margin:1.6rem 0;background:var(--panel);border:1px solid var(--line)}
+.box h4{margin:0 0 .4rem;font-size:1.05rem;font-weight:700}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.story{border-left:6px solid var(--gold);background:var(--panel2)}
+.story h4{font-family:var(--display);font-weight:400;font-size:1.7rem;letter-spacing:.03em;color:var(--gold)}
+.story .note{font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.simple{border:2px solid var(--gold)}
+.simple h4{color:var(--gold)}
+.take li::marker{color:var(--gold)}
+.warn{border-color:var(--bad)}
+.warn h4{color:var(--bad)}
+.big{border:3px solid var(--gold);background:var(--panel2);text-align:center;padding:1.4rem 1.3rem}
+.big p{font-family:var(--display);font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.1;color:var(--gold);margin:.2rem 0;letter-spacing:.02em}
+.big small{display:block;color:var(--mute);font-size:.95rem}
+.map{display:grid;gap:.6rem;margin:1.2rem 0;padding:0;list-style:none}
+.map li{margin:0}
+.map button{width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:.8rem 1rem;display:flex;gap:1rem;align-items:center;font-size:1rem}
+.map button:hover{border-color:var(--gold)}
+.map .n{font-family:var(--display);font-size:2rem;color:var(--gold);width:2rem;line-height:1}
+.map small{display:block;color:var(--mute);font-size:.85rem}
+.map .t{flex:1;font-weight:600}
+.map .m{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.btn{display:inline-block;background:var(--gold);color:var(--gold-ink);border:0;border-radius:10px;padding:.8rem 1.5rem;font-size:1.05rem;font-weight:700;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold)}
+.row{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.4rem 0}
+.timeline{list-style:none;padding:0;margin:1.2rem 0;border-left:3px solid var(--gold)}
+.timeline li{padding:.1rem 0 .9rem 1.2rem;margin:0;position:relative}
+.timeline li::before{content:"";position:absolute;left:-9px;top:.55rem;width:15px;height:15px;border-radius:50%;background:var(--gold)}
+.timeline b{display:block;font-family:var(--mono);font-size:.85rem;color:var(--gold);font-weight:500}
+.cap{font-size:.82rem;color:var(--mute);font-family:var(--mono)}
+table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.55rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--panel2);color:var(--gold)}
+td:first-child{font-weight:700}
+td.btc{background:var(--hl)}
+.scroll{overflow-x:auto}
+.widget{background:var(--panel);border:1px solid var(--gold);border-radius:12px;padding:1.1rem 1.3rem;margin:1.6rem 0}
+.widget h4{margin:0 0 .6rem;font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--gold);letter-spacing:.03em}
+.widget label{display:block;font-weight:600;font-size:.95rem;margin-top:.7rem}
+.widget input[type=number]{width:9rem;font-size:1.1rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.widget input[type=range]{width:100%;accent-color:var(--gold)}
+.widget .out{margin-top:1rem;padding:.8rem 1rem;background:var(--bg);border-radius:10px;border:1px dashed var(--line)}
+.widget .out strong{color:var(--gold)}
+.quiz{margin-top:3rem;border-top:2px solid var(--gold);padding-top:1.5rem}
+.quiz h3{margin-top:0;font-family:var(--display);font-weight:400;font-size:2.4rem;color:var(--gold)}
+.qcount{font-family:var(--mono);font-size:.85rem;color:var(--mute)}
+.qbar{height:6px;background:var(--panel2);border-radius:3px;margin:.4rem 0 1.2rem}
+.qbar i{display:block;height:100%;background:var(--gold);border-radius:3px;transition:width .3s}
+.qq{font-size:1.3rem;font-weight:600;line-height:1.4;margin:.4rem 0 1rem}
+.opt{display:flex;gap:.8rem;width:100%;text-align:left;background:var(--panel);border:2px solid var(--line);color:var(--ink);border-radius:12px;padding:.8rem 1rem;margin:.55rem 0;font-size:1.02rem;line-height:1.45}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt .l{font-family:var(--mono);color:var(--gold);flex:0 0 1.2rem}
+.opt.right{border-color:var(--good);background:rgba(69,196,138,.14)}
+.opt.wrong{border-color:var(--bad);background:rgba(240,108,100,.14)}
+.opt:disabled{cursor:default}
+.why{margin:1rem 0;padding:.9rem 1.1rem;border-radius:10px;background:var(--panel2);border-left:5px solid var(--gold)}
+.why.good{border-left-color:var(--good)}.why.bad{border-left-color:var(--bad)}
+.score{font-family:var(--display);font-size:5rem;color:var(--gold);line-height:1}
+.pager{display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;flex-wrap:wrap}
+#glossary{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto}
+#glossary[hidden]{display:none}
+.gbar{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.7rem 1rem;z-index:2}
+.gbar-in{max-width:760px;margin:0 auto;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+#gback{background:var(--gold);color:var(--gold-ink);border:0;border-radius:10px;padding:.7rem 1.2rem;font-size:1.02rem;font-weight:700;flex:1 1 auto}
+#gsearch{flex:1 1 12rem;font-size:1rem;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.gwrap{max-width:760px;margin:0 auto;padding:1.2rem 1.1rem 5rem}
+.gwrap h2{font-size:3rem;color:var(--gold)}
+.gentry{padding:1rem 1.1rem;margin:.8rem 0;border-radius:12px;background:var(--panel);border:1px solid var(--line);scroll-margin-top:90px}
+.gentry h4{margin:0 0 .3rem;font-size:1.25rem;color:var(--gold)}
+.gentry p{margin:.3rem 0}
+.gentry .ex{color:var(--mute);font-size:.95rem}
+.gentry.target{border:2px solid var(--gold);background:var(--panel2);animation:gl 1.8s ease 1}
+@keyframes gl{0%{box-shadow:0 0 0 0 var(--gold)}40%{box-shadow:0 0 0 10px transparent}}
+.gletter{font-family:var(--display);font-size:2rem;color:var(--gold);margin:1.4rem 0 0}
+.cert{border:4px double var(--gold);border-radius:14px;padding:2rem 1.4rem;text-align:center;margin:1.5rem 0;background:var(--panel)}
+.cert h2{font-size:3rem;color:var(--gold)}
+.cert .nm{font-family:var(--display);font-size:3rem;margin:.6rem 0;color:var(--ink)}
+input.nameIn{font-size:1.1rem;padding:.6rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);width:min(100%,22rem)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.8rem 1rem}
+.fields label{display:block;font-weight:600;font-size:.9rem}
+.fields input,.fields select{width:100%;margin-top:.25rem;font-size:1.05rem;padding:.5rem .6rem;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:inherit}
+.fields input[type=range]{padding:0;accent-color:var(--gold)}
+.help{font-size:.82rem;color:var(--mute);font-weight:400}
+.chips{display:flex;gap:.45rem;flex-wrap:wrap;margin:.9rem 0 .2rem;align-items:center}
+.chips span{font-size:.85rem;color:var(--mute);font-weight:600}
+.chip{background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.3rem .8rem;font-size:.85rem;font-weight:600}
+.chip:hover,.chip.on{background:var(--hl)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.7rem;margin:1.2rem 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem}
+.stat small{display:block;color:var(--mute);font-size:.82rem;line-height:1.3}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.1;color:var(--gold);margin-top:.2rem;word-break:break-word}
+.stat b.up{color:var(--good)}.stat b.down{color:var(--bad)}
+.stat em{display:block;font-style:normal;font-size:.8rem;color:var(--mute);margin-top:.1rem}
+.formula{font-family:var(--mono);font-size:1.05rem;text-align:center;padding:.9rem;background:var(--bg);border:1px dashed var(--gold);border-radius:10px;margin:1rem 0}
+@media (max-width:560px){html{font-size:17px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%;background:#fff;color:#000;border-color:#000}.cert h2,.cert .nm{color:#000}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-row">
+    <div class="brand">BLOCK WALL STREET</div>
+    <div class="tools">
+      <button class="tbtn" id="fsm" aria-label="Smaller text">A−</button>
+      <button class="tbtn" id="fsp" aria-label="Bigger text">A+</button>
+      <button class="tbtn" id="theme" aria-label="Switch light or dark">Light / Dark</button>
+      <button class="tbtn gl" id="openG">Glossary</button>
+    </div>
+  </div>
+  <nav class="pills" id="pills" aria-label="Course sections"></nav>
+  <div id="prog"><i></i></div>
+</header>
+
+<main id="app"></main>
+
+<div id="glossary" hidden role="dialog" aria-label="Glossary">
+  <div class="gbar"><div class="gbar-in">
+    <button id="gback">← Back to where I was reading</button>
+    <input id="gsearch" type="search" placeholder="Search a word…" aria-label="Search the glossary">
+  </div></div>
+  <div class="gwrap">
+    <h2>GLOSSARY</h2>
+    <p class="sub">Every hard word in this course, explained in plain English.</p>
+    <div id="glist"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   GLOSSARY: key -> [Word, Definition, Example]
+   ========================================================= */
+const T = {
+"money":["Money","Anything people widely agree to accept in exchange for the things they sell, like food, work, or a place to live.","Cedis, dollars, and (for a growing number of people) bitcoin."],
+"barter":["Barter","Trading things directly for other things, with no money involved.","Giving a barber a bag of tomatoes for a haircut."],
+"medium-of-exchange":["Medium of Exchange","A fancy way to say “a tool for buying and selling.” It is the first job of money.","You hand over GH₵5 and get a snack. The GH₵5 is the medium of exchange."],
+"store-of-value":["Store of Value","Something that keeps its buying power over time, so you can save it today and use it later. This is the second job of money.","Gold has held its value for thousands of years."],
+"unit-of-account":["Unit of Account","A measuring stick for prices. It lets us compare the cost of different things on the same scale. This is the third job of money.","Waakye is GH₵30 and a movie ticket is GH₵60. Now you know the ticket costs twice as much."],
+"scarce":["Scarce","Hard to get because there is a limited amount. Scarce things usually hold their value better.","There is only so much gold in the world."],
+"durable":["Durable","Lasts a long time without rotting or breaking down.","Gold lasts for centuries. Tomatoes do not."],
+"cowrie":["Cowrie Shell","A small sea shell that was used as money in West Africa for hundreds of years.","People traded cowries for food, cloth, and tools."],
+"gold-standard":["Gold Standard","A system where paper money can be swapped for real gold. The US ended this link for the dollar on August 15, 1971.","Before 1971, a country’s paper money was tied to gold in a vault."],
+"fiat":["Fiat Money","Money that has value because the government says it does and people trust it, not because gold or anything else backs it. The cedi and the dollar are fiat.","“Fiat” is Latin for “let it be done.”"],
+"central-bank":["Central Bank","The main bank of a country. It controls how much money is in the system and sets key interest rates. In Ghana it is the Bank of Ghana. In the US it is the Federal Reserve.","When the news says “the central bank raised rates,” this is who they mean."],
+"supply":["Supply","How much of something there is.","The money supply is the total amount of cedis out there."],
+"currency":["Currency","The type of money a country uses.","The cedi is the currency of Ghana."],
+"exchange-rate":["Exchange Rate","How many cedis it takes to buy one unit of another currency, like one US dollar. When it takes more cedis to buy a dollar, the cedi has weakened.","If the rate goes from 6 to 12 cedis per dollar, the cedi lost half its value against the dollar."],
+"inflation":["Inflation","When prices go up over time, so the same money buys less than it used to. Your cedi note does not shrink. What it can buy shrinks.","A bag of rice costs GH₵100 this year and GH₵120 next year. You still have your GH₵100, but it no longer buys the bag."],
+"purchasing-power":["Purchasing Power","How much stuff your money can buy. When inflation goes up, purchasing power goes down.","Years ago GH₵50 filled your cooking basket. Now it fills half."],
+"devalue":["Devalue","When money becomes worth less, meaning each unit buys less than before.","When people say “the cedi lost value,” they mean each cedi buys less."],
+"money-printing":["Money Printing","When a government or central bank creates new money. Today it is mostly done with computers, not printing presses.","More money chasing the same goods pushes prices up."],
+"demand":["Demand","How much people want something. When lots of people want it, prices tend to go up.","Before a festival, demand for cloth goes up and so do prices."],
+"cost-of-living":["Cost of Living","How much money you need for the basics: rent, food, transport, and phone data.","If rent and food go up but your pay does not, your cost of living just went up."],
+"interest":["Interest","Money paid for using money. If you save, a bank may pay you interest. If you borrow, you pay interest.","You borrow GH₵100 and pay back GH₵120. The extra GH₵20 is interest."],
+"saving":["Saving","Setting money aside now instead of spending it, so you have it later.","Putting GH₵20 from every day’s sales into a separate box."],
+"susu":["Susu","A traditional Ghanaian way of saving. You hand a small amount to a collector every day or week, and they keep it safe for you or you take turns receiving the pot.","A market woman gives her susu collector GH₵10 each day."],
+"mobile-money":["Mobile Money (MoMo)","Money you keep and send through your phone number, like MTN MoMo, Telecel Cash, or AirtelTigo Money. It is very handy for everyday payments, but it is still cedis.","Sending GH₵50 to your sister by MoMo."],
+"emergency-fund":["Emergency Fund","Money you keep set aside only for surprises, like a sickness, a repair, or losing a job. Start small and build up.","Your phone breaks and you fix it from your emergency fund instead of borrowing."],
+"debt":["Debt","Money you owe to someone else.","A loan from a bank, a loan app, or a friend."],
+"loan-app":["Quick Loan App","A phone app that lends small amounts fast, often with very high fees and short deadlines. Be careful: the cost can be huge.","Borrowing GH₵300 and owing GH₵400 two weeks later."],
+"wealth":["Wealth","Everything you own that is worth something, minus what you owe. Income is what you earn. Wealth is what you keep.","Someone who earns a little but owns land and a business can be wealthier than someone who earns a lot and spends it all."],
+"asset":["Asset","Something you own that holds its value or grows, or puts money in your pocket.","Land, a business, gold, or bitcoin."],
+"liability":["Liability","Something that takes money out of your pocket.","A loan payment, or a gadget bought on credit that loses value."],
+"net-worth":["Net Worth","Everything you own minus everything you owe.","You own GH₵5,000 in stuff and savings and owe GH₵2,000. Your net worth is GH₵3,000."],
+"risk":["Risk","The chance that you could lose some or all of your money. Bigger possible rewards usually come with bigger risk.","Putting your rent money into a coin you saw on social media is very high risk."],
+"bitcoin":["Bitcoin","The first and biggest cryptocurrency. It is digital money that runs on a network of computers around the world, with no bank or government in charge. Only 21 million will ever exist.","You can send bitcoin to anyone with a phone and internet, any time of day."],
+"cryptocurrency":["Cryptocurrency (Crypto)","Digital money that lives on a computer network and is protected by code. Bitcoin was first. Now there are thousands.","Bitcoin, Ethereum, and USDT are all crypto."],
+"satoshi-nakamoto":["Satoshi Nakamoto","The name used by the unknown person or group who created Bitcoin. Nobody knows who they are. They left the public eye in 2011.","The Bitcoin paper in 2008 was published under this name."],
+"whitepaper":["Whitepaper","A report that explains how an invention works. The Bitcoin whitepaper is only nine pages long.","Satoshi’s whitepaper explained how people could send money without a bank."],
+"bailout":["Bailout","When a government steps in with money to rescue failing companies, paid for with taxpayer money.","In 2008, governments gave billions to banks that lost money on risky bets."],
+"blockchain":["Blockchain","A shared digital notebook where records are saved in groups called blocks, chained together in order. Everyone can check it, and old entries cannot be erased or changed.","Bitcoin’s blockchain has recorded every bitcoin transaction since 2009."],
+"ledger":["Ledger","A record book that lists who owns what and who paid whom.","A shop owner writing every sale in a notebook is keeping a ledger."],
+"decentralized":["Decentralized","Not controlled by any one person, company, or government. Many people share the control.","No CEO runs Bitcoin and no one can switch it off."],
+"peer-to-peer":["Peer-to-Peer","Directly from one person to another, with no middleman.","Handing a friend a cash note is peer-to-peer. Bitcoin lets you do that over the internet."],
+"node":["Node","A computer that keeps a full copy of the blockchain and checks that everyone follows the rules.","Thousands of nodes around the world make sure nobody cheats."],
+"mining":["Mining","The process where powerful computers compete to add new blocks to the blockchain. The winner earns new bitcoin. This is how new bitcoin enters the world and how the network stays safe.","Miners are paid to keep the notebook honest."],
+"halving":["Halving","An event about every four years when the amount of new bitcoin created is cut in half. It keeps bitcoin scarce.","The halving in April 2024 cut the reward from 6.25 to 3.125 bitcoin per block."],
+"sat":["Sat (Satoshi)","The smallest piece of a bitcoin. One bitcoin is 100 million sats, so you never need to buy a whole bitcoin.","Even a small amount of cedis buys thousands of sats."],
+"digital-gold":["Digital Gold","A nickname for Bitcoin. Like gold it is scarce and hard to fake. Unlike gold, you can send it across the world in minutes.","Some people say Bitcoin is gold for the internet age."],
+"volatility":["Volatility","How much and how fast a price jumps up and down. Bitcoin is very volatile in the short run.","A price that rises 20% one month and falls 15% the next is volatile."],
+"altcoin":["Altcoin","Any cryptocurrency that is not Bitcoin. The word means “alternative coin.”","Ethereum, Solana, and XRP are altcoins."],
+"stablecoin":["Stablecoin","A crypto designed to stay worth about one US dollar. Useful for moving dollars, but it is not scarce and it does not grow. It is not Bitcoin.","USDT and USDC are stablecoins."],
+"exchange":["Exchange","A website or app where you can buy and sell crypto. You usually must show ID to sign up.","Well-known, regulated platforms are safer than a stranger online."],
+"wallet":["Wallet","An app or device that holds your keys, which are the secret codes that control your crypto. The coins live on the blockchain. The wallet is how you reach them.","Think of a key ring, not a leather wallet full of cash."],
+"private-key":["Private Key","A long secret code that proves your crypto is yours and lets you spend it. Anyone who has it can take your coins.","Treat it like the PIN to your whole bank account, times a thousand."],
+"seed-phrase":["Seed Phrase","A list of 12 or 24 words that can rebuild your wallet and all your keys. Write it on paper, hide it, and never share it with anyone, ever.","If someone asks for your seed phrase, it is a scam. Every time."],
+"self-custody":["Self-Custody","Holding your own keys instead of letting a company hold your crypto for you. You are in full control and fully responsible.","“Not your keys, not your coins.”"],
+"hardware-wallet":["Hardware Wallet","A small physical device, like a USB stick, that keeps your keys offline and away from hackers.","Ledger, Trezor, and Coldcard make popular ones."],
+"phishing":["Phishing","When scammers send fake messages, calls, or websites to trick you into giving up passwords, keys, or money.","A text says “Your account is locked, click here,” and the link goes to a fake site."],
+"rug-pull":["Rug Pull","When the people behind a new crypto project take everyone’s money and disappear.","A brand-new coin shoots up, then the creators sell everything and vanish."],
+"ponzi-scheme":["Ponzi Scheme","A scam that pays old investors with money from new investors and promises big, guaranteed returns. It always falls apart.","“Put in GH₵1,000 and get GH₵2,000 next month, guaranteed!”"],
+"trading":["Trading","Buying and selling again and again, trying to catch small price moves and make a quick profit. It is a very hard game, and most people who try it lose.","Buying in the morning and selling in the afternoon, hoping the price goes up."],
+"stacking":["Stacking (Stacking Sats)","Steadily collecting more and more bitcoin over time and keeping it. Success is measured in how much bitcoin you own, not in short-term profit.","Buying a small amount every week for years."],
+"hodl":["HODL","Crypto slang for holding on to your bitcoin through the ups and downs instead of selling in panic. It started as a typo for “hold.”","The price drops 30% and you do nothing. You hodl."],
+"dollar-cost-averaging":["Dollar-Cost Averaging (DCA)","Buying a small, fixed amount on a regular schedule, like GH₵50 every Friday, no matter what the price is. It removes the stress of guessing the “right time.”","Buying bitcoin every payday for years."],
+"average-cost":["Average Cost","What you paid per coin, on average, across all your buys. Formula: total money spent ÷ total coins you got.","You spend $200 total and end up with 0.006 bitcoin. Your average cost is about $33,333 per bitcoin."],
+"leverage":["Leverage","Borrowing money to make a bigger bet. It can wipe you out fast, because losses are bigger too.","Borrowing to buy crypto, then the price drops and you owe more than you have."],
+"remittance":["Remittance","Money sent home by someone working abroad. Many Ghanaian families depend on it. Fees can be high.","A nurse in London sends money to her mother in Kumasi."],
+"financial-advice":["Financial Advice","Personalized guidance about what you should do with your own money, given by a licensed professional. This course teaches and educates. It does not tell you what to buy.","A licensed financial planner can look at your whole situation."]
+};
+
+/* =========================================================
+   QUIZ FORMAT: {q, c: correct answer, x: [3 wrong answers], w: why}
+   Answer order is shuffled every time.
+   ========================================================= */
+const SECTIONS = [
+
+{id:'s1', title:"WHAT IS MONEY, REALLY?", short:'What is money', mins:9,
+ sub:"Before we can understand the new money, we have to understand what money is and where it comes from.",
+ html:`
+<div class="box story"><h4>Story: Kwame's Tomatoes</h4>
+<p>Imagine a world with no money. Kwame sells tomatoes at the market. Today he has a big basket and he wants a haircut. He walks to Yaw the barber.</p>
+<p>"I'll pay you in tomatoes," Kwame says.</p>
+<p>Yaw shakes his head. "I don't need tomatoes. I need a phone charger."</p>
+<p>So Kwame goes looking for someone with a phone charger who wants tomatoes. That person wants fish. The fish seller wants a haircut. Three hours later, Kwame is still carrying tomatoes, and the tomatoes are starting to rot.</p>
+<p>That is the problem money was invented to solve.</p></div>
+
+<h3>Trading without money</h3>
+<p>Trading things directly is called [[barter]]. It only works when you find a person who has what you want <em>and</em> wants what you have, at the same time. That almost never happens.</p>
+<p>So people picked one thing that everybody would accept, and traded for that. That one thing is [[money]].</p>
+
+<h3>The three jobs of money</h3>
+<ol>
+<li><strong>A tool for trading.</strong> This is called a [[medium-of-exchange]]. You hand over GH₵5, you get a snack. No arguing about tomatoes.</li>
+<li><strong>A way to hold value.</strong> This is called a [[store-of-value]]. You earn today, you keep it, and you spend it next month or next year. It should still buy about the same amount of stuff.</li>
+<li><strong>A measuring stick.</strong> A [[unit-of-account]] lets us compare prices. Waakye is GH₵30. A movie ticket is GH₵60. Now you know the ticket costs double.</li>
+</ol>
+<div class="box simple"><h4>Hold on to job number two</h4><p>The <strong>store of value</strong> job is the most important one for your future. If your money cannot hold its value, you cannot save, and you cannot build wealth. Keep this in your mind for the rest of the course.</p></div>
+
+<h3>What makes good money?</h3>
+<ul>
+<li><strong>[[scarce|Scarce]].</strong> There is a limited amount. If anyone could make unlimited amounts, it would be worthless.</li>
+<li><strong>[[durable|Durable]].</strong> It lasts. Tomatoes rot, so they make bad money. Gold lasts forever.</li>
+<li><strong>Portable.</strong> You can carry it or send it easily.</li>
+<li><strong>Divisible.</strong> You can break it into small amounts, like change.</li>
+<li><strong>Trusted.</strong> Everyone believes others will accept it.</li>
+</ul>
+
+<h3>How money changed over time</h3>
+<ol class="timeline">
+<li><b>Hundreds of years ago</b>In West Africa, people used [[cowrie|cowrie shells]] and gold dust. The Ashanti even had special weights to measure gold dust fairly.</li>
+<li><b>Around the world</b>Gold and silver coins spread. They were scarce, durable, and easy to carry.</li>
+<li><b>Later</b>Paper notes appeared. A paper note was a receipt you could swap for real gold. This is the [[gold-standard]].</li>
+<li><b>1965</b>Ghana introduced the cedi as its own money, replacing the Ghana pound.</li>
+<li><b>August 15, 1971</b>The US ended the link between the dollar and gold. The dollar became pure trust.</li>
+<li><b>2007</b>Ghana cut zeros off the old cedi. Ten thousand old cedis became one new cedi. The number got smaller because the old money had lost so much value.</li>
+<li><b>Today</b>Most money is not paper at all. It is numbers on a phone or a computer, like [[mobile-money|mobile money]].</li>
+</ol>
+
+<h3>So what backs the cedi?</h3>
+<p>The cedi, like the dollar, is [[fiat]] money. It has value because the government says it does and enough of us go along with it. Nothing like gold sits in a vault behind it.</p>
+<p>Here is the part most people are never told: the government and the [[central-bank]] (the Bank of Ghana for cedis) can create more money whenever they decide. We call the total amount the [[supply]]. When the supply of anything grows and grows, each piece becomes worth a little less.</p>
+<p>The [[currency]] we use every day feels solid, so we rarely ask this question. In the next section, we will see what it does to our savings.</p>
+
+<div class="box simple"><h4>Say it simple</h4><p>Money is a trusted tool for trading, saving, and measuring prices. Cedis and dollars work because we all agree they do, and because the people who run them can make more.</p></div>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>Barter is hard, so people invented money.</li>
+<li>Money has three jobs: trade, store value, and measure prices.</li>
+<li>Good money is scarce, durable, portable, divisible, and trusted.</li>
+<li>The cedi and the dollar are fiat: backed by trust, not gold.</li>
+<li>Governments and central banks can increase the supply of their money.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"What is barter?",c:"Trading things directly without using money",x:["Saving money in a bank","Printing new money","Borrowing from a friend"],w:"Barter is direct trade, like tomatoes for a haircut, with no money in the middle."},
+ {q:"What is the biggest problem with barter?",c:"You need someone who has what you want AND wants what you have",x:["Nobody likes trading","Trades are illegal","Everything is too cheap"],w:"That double match is rare. Money fixes it."},
+ {q:"Which one is a job of money?",c:"A medium of exchange: a tool for buying and selling",x:["Making you famous","Growing on trees","Staying in your pocket forever"],w:"The three jobs: medium of exchange, store of value, and unit of account."},
+ {q:"“Store of value” means...",c:"Money keeps its buying power over time so you can use it later",x:["A shop that sells things","A vault inside a bank","A discount coupon"],w:"A good store of value holds its buying power from today to next year."},
+ {q:"Which one is NOT a trait of good money?",c:"Anyone can make unlimited amounts of it",x:["Hard to fake","Easy to carry","Lasts a long time"],w:"If anyone could make unlimited amounts, it would lose its value."},
+ {q:"What is fiat money?",c:"Money that has value because the government says so and people trust it",x:["Money backed by gold in a vault","Money made of plastic","Money from another country"],w:"Fiat money has nothing like gold behind it. The cedi and the dollar are fiat."},
+ {q:"What did people in West Africa use as money hundreds of years ago?",c:"Cowrie shells and gold dust",x:["Plastic cards","Mobile money","Paper checks"],w:"Cowries and gold dust were widely used on the Gold Coast and across West Africa."},
+ {q:"Who can increase the supply of cedis?",c:"The government and the Bank of Ghana",x:["Only the market sellers","Nobody, the amount is fixed forever","Your local bank branch"],w:"That is one big difference between the cedi and something with a fixed supply."}
+ ]},
+
+{id:'s2', title:"WHY YOUR CEDI LOSES POWER", short:'Inflation', mins:10,
+ sub:"Why the money in your pocket buys less every year, and why that matters for your future.",
+ html:`
+<div class="box story"><h4>Story: Ama's Tin</h4>
+<p>Ama sells provisions in her neighborhood. One year she saved GH₵1,000 in cash and hid it in a tin. "This is for my shop extension," she said.</p>
+<p>Years later she opened the tin. Every note was still there. A thousand cedis, exactly as she left it.</p>
+<p>But the building materials she wanted now cost far more. The money had not moved. Nobody had stolen a single note. So what happened?</p>
+<p>[[inflation|Inflation]] happened. Her money got weaker while it sat in the tin.</p>
+<p class="note">Example story. Real prices vary, but millions of Ghanaians have lived this.</p></div>
+
+<h3>What is inflation?</h3>
+<div class="box simple"><h4>Inflation, simple</h4><p>Prices go up over time, so the same money buys less than before. Your cedi did not shrink. What it can buy shrank.</p></div>
+<p>The power of your money to buy things has a name: [[purchasing-power]]. When inflation goes up, purchasing power goes down.</p>
+
+<h3>The market-day example</h3>
+<p>Picture a market with 10 bags of rice and GH₵1,000 total in everyone's pockets. Each bag costs GH₵100.</p>
+<p>Now suppose a lot of new money enters the market, so there is GH₵2,000. There are still only 10 bags of rice. Everyone has more money chasing the same rice. Sellers notice and raise the price to GH₵200.</p>
+<p>Are you richer? You have more cedis, but you can still only buy the same amount of rice. <strong>When there is more money but not more stuff, each cedi is worth less.</strong></p>
+
+<h3>Why does it happen?</h3>
+<ul>
+<li><strong>More money gets made.</strong> When governments and central banks create new money ([[money-printing]]), there is more money chasing the same goods.</li>
+<li><strong>[[demand|Demand]] jumps.</strong> When many people want the same thing, sellers charge more.</li>
+<li><strong>Goods get harder to bring in.</strong> A lot of what Ghana buys comes from abroad, priced in dollars. When the cedi weakens, imported goods cost more cedis.</li>
+<li><strong>Business costs rise.</strong> Fuel, transport, and materials get more expensive, so sellers raise prices.</li>
+</ul>
+
+<h3>Ghana knows this story well</h3>
+<p>In 2022, Ghana's yearly inflation climbed above 50%, a level the country had not seen in decades. Around the same time the cedi weakened sharply against the US dollar. The [[exchange-rate]] is how many cedis it takes to buy one dollar. In early 2022 it took roughly 6 cedis to buy a dollar. By 2024 it took well over 10.</p>
+<p>That means people who held only cedis saw their buying power fall fast, especially for imported things like fuel, medicine, phones, and building materials. Things have improved and changed since then, and the numbers move all the time, so check the latest figures from the Bank of Ghana or the Ghana Statistical Service.</p>
+<p>The pattern, though, is old: over the long run, [[currency|currencies]] controlled by governments lose [[purchasing-power]]. The old cedi lost so much value that in 2007 the country cut four zeros off it.</p>
+
+<div class="widget" data-widget="inflation"></div>
+
+<h3>The Rule of 72</h3>
+<p>Here is a quick trick. Divide 72 by the yearly inflation rate. The answer is the number of years it takes for your cash to lose <strong>half</strong> of its buying power.</p>
+<div class="scroll"><table>
+<tr><th>Yearly inflation</th><th>Years until cash loses half its buying power</th></tr>
+<tr><td>5%</td><td>about 14 years</td></tr>
+<tr><td>10%</td><td>about 7 years</td></tr>
+<tr><td>20%</td><td>about 3.6 years</td></tr>
+<tr><td>30%</td><td>about 2.4 years</td></tr>
+</table></div>
+
+<h3>Who gets hurt, who gets protected?</h3>
+<p><strong>Hurt the most:</strong> people who keep their savings only as cash, and people whose pay does not rise as fast as prices. Their [[cost-of-living]] climbs while their income stays flat.</p>
+<p><strong>Protected more:</strong> people who own things with a limited supply or that rise with prices, like land, a business, gold, and (as many people believe) bitcoin. They hold [[asset|assets]], not piles of cash.</p>
+
+<h3>How do you fight back?</h3>
+<ol>
+<li><strong>Earn more.</strong> Learn skills people pay for.</li>
+<li><strong>Do not leave big savings in cedis for years.</strong> Cash is for bills and emergencies.</li>
+<li><strong>Own scarce assets.</strong> Things that cannot be made in unlimited amounts.</li>
+<li><strong>Learn about scarce money.</strong> That is Bitcoin, and it is coming up soon.</li>
+</ol>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>Inflation means prices rise and the same money buys less.</li>
+<li>More money chasing the same goods is a main cause.</li>
+<li>Ghana has lived through very high inflation and a weaker cedi.</li>
+<li>Cash sitting still loses buying power year after year.</li>
+<li>The Rule of 72 tells you how fast: 72 ÷ inflation rate = years to lose half.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"What does inflation mean?",c:"Prices go up over time, so the same money buys less",x:["Prices always go down","Banks pay everyone more interest","Wages double every year"],w:"Inflation is rising prices. Same money, less stuff."},
+ {q:"What is purchasing power?",c:"How much stuff your money can buy",x:["How strong you are","How many banks you use","Your age"],w:"Purchasing power is what your money can actually buy."},
+ {q:"Your pay stays the same, but prices keep rising. What happens?",c:"You can buy less with the same pay",x:["You get richer","Nothing changes","You pay fewer taxes"],w:"Same pay, higher prices means less buying power."},
+ {q:"Which can cause inflation?",c:"Lots of new money chasing the same amount of goods",x:["Rain on the weekend","More trees in the city","Smaller paychecks"],w:"More money chasing the same goods pushes prices up, like the rice example."},
+ {q:"What is an exchange rate?",c:"How many cedis it takes to buy one unit of another currency, like a dollar",x:["The fee at a bank","The price of gold","A kind of loan"],w:"When it takes more cedis to buy a dollar, the cedi has weakened."},
+ {q:"At 10% inflation, cash loses half its buying power in about...",c:"7 years",x:["2 years","25 years","Never"],w:"72 ÷ 10 = about 7 years. That is the Rule of 72."},
+ {q:"Who gets hurt the most by inflation?",c:"People who keep savings only in cash and whose pay does not keep up",x:["People who own lots of assets","Nobody","Only the very rich"],w:"Cash savers and people with flat pay lose the most buying power."},
+ {q:"What do many people do to protect themselves from inflation?",c:"Own scarce assets that tend to hold value, like land, gold, or bitcoin",x:["Hide more cash in a tin","Spend it all today","Close their bank account"],w:"Scarce assets can keep up with rising prices better than cash. Every asset has some risk."}
+ ]},
+
+{id:'s3', title:"SAVE IT, PROTECT IT", short:'Saving basics', mins:9,
+ sub:"Simple money habits that work for anyone, whether you earn GH₵500 or GH₵5,000 a month.",
+ html:`
+<div class="box story"><h4>Story: Efua's First Pay</h4>
+<p>Efua got her first real pay: GH₵800. Her friends were already planning an outing.</p>
+<p>Her aunt took her aside. "Before you spend any of it, take 10% and put it somewhere you cannot touch. That is how your grandmother did it with her susu."</p>
+<p>Efua thought it was old-fashioned. But she did it. GH₵80 went into her savings. Then she went out with GH₵720 and still had a good time.</p>
+<p>Months later her phone screen cracked and she needed a quick repair. She paid from her savings. No loan app. No begging. No stress. She did not get rich that day. She got <em>ready</em>, and that made all the difference.</p></div>
+
+<h3>Know your numbers</h3>
+<p>Write down what comes in and what goes out. That is all a budget is. It is a plan for where your money goes before you spend it.</p>
+<ul>
+<li><strong>Needs:</strong> rent, food, transport, data, school fees.</li>
+<li><strong>Wants:</strong> going out, new clothes, extras.</li>
+<li><strong>Future:</strong> [[saving]] and building [[asset|assets]].</li>
+</ul>
+<p>A popular rule is 50% needs, 30% wants, 20% future. If that sounds impossible, start with 5%. The habit matters more than the amount.</p>
+
+<h3>Pay yourself first</h3>
+<p>Most people save what is <em>left</em> at the end of the month, and usually nothing is left. Flip it. The moment you are paid, move your savings out first. Then spend what remains.</p>
+<p>Ghana already has this wisdom. A [[susu]] is exactly this: money set aside before it is spent. The idea is old and it works.</p>
+
+<h3>Build an emergency fund</h3>
+<p>An [[emergency-fund]] is money for surprises: sickness, repairs, or a lost job. First goal: one month of basic costs. Later: three months. Until you have this, every surprise becomes [[debt]].</p>
+
+<h3>Where does cash belong?</h3>
+<p>[[mobile-money|Mobile money]], a susu, and a bank account are all useful for <strong>everyday money and emergencies</strong>. They are safe and easy to reach. But they hold cedis, and cedis lose buying power over time (you saw that in Section 2). So think of them as your <em>wallet</em> and your <em>cushion</em>, not as the place to build long-term wealth.</p>
+<div class="box simple"><h4>Two buckets</h4><p><strong>Bucket 1, the cushion:</strong> cedis for bills and emergencies.<br><strong>Bucket 2, the future:</strong> scarce assets you hold for years. For this course, that means Bitcoin.</p></div>
+
+<h3>Debt: be careful</h3>
+<p>[[debt]] is money you owe. A planned loan for a business can help. But careless borrowing can trap you.</p>
+<ul>
+<li>Always ask: how much will I pay back in total, and by when?</li>
+<li>A [[loan-app|quick loan app]] can look easy, but fees and short deadlines can make the real cost enormous. Never borrow to cover the next loan.</li>
+<li>Never borrow money to buy crypto. If the price falls, you still owe the full loan. That kind of bet is called [[leverage]], and it destroys people.</li>
+</ul>
+
+<h3>Assets vs. liabilities</h3>
+<p>An [[asset]] holds its value or grows. A [[liability]] takes money out of your pocket. Land, a working business, and bitcoin are assets. A phone bought on credit that loses value every month is a liability. Your [[net-worth]] is everything you own minus everything you owe. The goal is to make it grow.</p>
+
+<h3>Risk and spreading it out</h3>
+<p>Everything you can own has [[risk]], which means you can lose money. Two rules protect you:</p>
+<ol>
+<li><strong>Never put in money you need for rent, food, school fees, or bills.</strong></li>
+<li><strong>Keep your cushion separate</strong> from your long-term savings, so you are never forced to sell at a bad time.</li>
+</ol>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>Pay yourself first, even if it is only 5%. That is the susu idea.</li>
+<li>Build an emergency fund before anything else.</li>
+<li>Cedis in MoMo or a bank are a cushion, not a way to build wealth.</li>
+<li>Avoid quick loan apps and never borrow to buy crypto.</li>
+<li>Only use money you can leave alone for years.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"What is a budget?",c:"A plan for where your money will go",x:["A type of bank","A kind of loan","A tax"],w:"A budget tells your money where to go before you spend it."},
+ {q:"“Pay yourself first” means...",c:"Move some money into savings as soon as you get paid",x:["Spend on yourself before paying bills","Borrow money from yourself","Skip paying your bills"],w:"Save first, then spend what is left, instead of saving what is left."},
+ {q:"What is an emergency fund for?",c:"Surprises like sickness, a repair, or a lost job",x:["Parties and outings","Vacations","Buying more crypto"],w:"It keeps surprises from turning into debt."},
+ {q:"What is a susu?",c:"A traditional way of saving by setting money aside regularly",x:["A type of loan app","A kind of phone","A tax paid to the government"],w:"A susu is the “pay yourself first” idea, done the Ghanaian way."},
+ {q:"Why are cedis in MoMo or a bank not great for building long-term wealth?",c:"Cedis can lose buying power to inflation over time",x:["They are illegal to keep","Banks never keep money safe","MoMo charges you to hold cedis"],w:"They are great for everyday money, but long-term savings need something scarce."},
+ {q:"What is the problem with most quick loan apps?",c:"Fees and short deadlines can make the real cost huge",x:["They only give money to rich people","They are always free","They take weeks to approve"],w:"Always check the total you must pay back, and never borrow to pay another loan."},
+ {q:"Which one is a liability?",c:"A phone bought on credit that loses value every month",x:["A working business","Land you own","Bitcoin you hold"],w:"A liability takes money out of your pocket."},
+ {q:"Why should you never borrow money to buy crypto?",c:"If the price falls, you still owe the whole loan",x:["Crypto cannot be bought with borrowed money","Banks forbid saving","It always doubles in a week"],w:"Borrowing to bet is called leverage, and it can wipe you out."}
+ ]},
+
+{id:'s4', title:"BITCOIN: THE NEW MONEY", short:'Bitcoin', mins:12,
+ sub:"What Bitcoin is, why it was created, and why it is the strongest money the world has ever seen.",
+ html:`
+<div class="box story"><h4>Story: Two Pizzas</h4>
+<p>On May 22, 2010, a programmer named Laszlo posted online: he would pay 10,000 [[bitcoin|bitcoin]] to anyone who would order him two pizzas. At that time bitcoin was worth almost nothing. A man accepted and delivered two pizzas.</p>
+<p>At recent prices, those 10,000 bitcoin would be worth hundreds of millions of dollars, even more than a billion at the highest prices.</p>
+<p>Was Laszlo foolish? No. Nobody knew. Most people thought Bitcoin was a joke. The story is told every year on "Bitcoin Pizza Day." The lesson: <strong>new money can look like nothing, right up until it does not.</strong></p></div>
+
+<div class="box big"><p>BITCOIN IS THE NEW MONEY.</p><small>This is the main idea of this whole course. Let's see why.</small></div>
+
+<h3>Why Bitcoin was created</h3>
+<p>Remember Section 1 and 2: when governments and banks control money, they can make more of it whenever they want, and savers lose. In 2008, banks around the world took huge risks, lost, and nearly crashed the economy. Governments stepped in with a [[bailout]] using people's tax money. Ordinary families lost jobs and homes.</p>
+<p>On October 31, 2008, someone using the name [[satoshi-nakamoto]] shared a nine-page [[whitepaper]]. It described money that no bank and no government could control. On January 3, 2009, the Bitcoin network started. Satoshi hid a message in the very first block: a newspaper headline about banks getting bailed out again. That was the point.</p>
+<p>Satoshi disappeared from public view in 2011. Nobody knows who they were. That is actually a strength: Bitcoin has no leader to pressure, arrest, or bribe.</p>
+
+<h3>Bitcoin in plain English</h3>
+<p>[[bitcoin|Bitcoin]] is digital money that no company, bank, or government runs. Thousands of computers all over the world keep track of who owns what.</p>
+<div class="box simple"><h4>Think of it like this</h4><p>Imagine a notebook at the market where every sale is written down. Now imagine <em>everyone</em> in the market has an identical copy. If one person tries to cheat and change their copy, it will not match everyone else's, and they are caught. That notebook is called a [[ledger]]. Bitcoin's version is called a [[blockchain]].</p></div>
+<p>Because no one person is in charge, Bitcoin is [[decentralized]]. You can send it [[peer-to-peer]]: person to person, with no bank in the middle. The computers that keep the notebook honest are called [[node|nodes]].</p>
+
+<h3>Where do new bitcoin come from?</h3>
+<p>Through [[mining]]. Powerful computers compete to add the next page to the notebook about every 10 minutes. The winner is paid in new bitcoin. This is how new coins enter the world, and it is also what protects the network from cheaters.</p>
+
+<h3>The 21 million rule</h3>
+<p>There will only ever be 21 million bitcoin. Not 21 million and one. That limit is written into the code, and nearly all of them are already mined. The last will be mined around the year 2140. No president, no bank, and no company can change this, because thousands of computers around the world would reject the change.</p>
+<p>About every four years there is a [[halving]]: the amount of new bitcoin created is cut in half. It went 50, 25, 12.5, 6.25, and since April 2024 it is 3.125 per block. New supply keeps shrinking while more people learn about it.</p>
+<p>You do not need to buy a whole bitcoin. One bitcoin splits into 100 million tiny pieces called [[sat|sats]]. Even a small amount of cedis buys you thousands of sats.</p>
+
+<h3>The good-money scorecard</h3>
+<p>In Section 1 we listed what makes good money. Let's score the cedi, gold, and Bitcoin.</p>
+<div class="scroll"><table>
+<tr><th></th><th>Cedi</th><th>Gold</th><th>Bitcoin</th></tr>
+<tr><td>Scarce?</td><td>No. More can be made at any time.</td><td>Mostly. But new gold is mined every year.</td><td class="btc">Yes. 21 million forever.</td></tr>
+<tr><td>Durable?</td><td>Notes wear out. Value wears out too.</td><td>Yes.</td><td class="btc">Yes. Lives on thousands of computers.</td></tr>
+<tr><td>Portable?</td><td>Cash yes. Across borders, hard and costly.</td><td>Heavy and risky to carry.</td><td class="btc">Send it across the world from a phone, in minutes.</td></tr>
+<tr><td>Divisible?</td><td>Yes: 100 pesewas to a cedi.</td><td>Hard to split.</td><td class="btc">Yes: 100 million sats to a bitcoin.</td></tr>
+<tr><td>Trusted by?</td><td>Trust the government and central bank.</td><td>Trust the dealer and the scale.</td><td class="btc">Trust open code, checked by thousands of computers.</td></tr>
+<tr><td>Can someone make more?</td><td>Yes.</td><td>Slowly.</td><td class="btc">No.</td></tr>
+</table></div>
+<p>Bitcoin is the only money that is scarce, easy to send, easy to split, and not controlled by anyone. That is why this course calls it the new money.</p>
+
+<h3>Why this matters for Ghana</h3>
+<ul>
+<li><strong>A hedge against a weak currency.</strong> If your income and savings are in cedis, you feel every drop in the cedi. Bitcoin's supply cannot be increased to cover someone's budget problems.</li>
+<li><strong>Money without permission.</strong> You do not need a bank branch, a manager's approval, or a large balance. You need a phone and the internet.</li>
+<li><strong>Sending money home.</strong> A [[remittance]] from family abroad can come with big fees and delays. Bitcoin is open 24 hours a day, 7 days a week.</li>
+<li><strong>Anyone can start small.</strong> You can own a piece of Bitcoin with a very small amount.</li>
+</ul>
+
+<h3>Straight talk about the risks</h3>
+<div class="box warn"><h4>Read this part twice</h4>
+<ul>
+<li>Bitcoin's price is very [[volatility|volatile]] in the short run. It has dropped 70% to 80% several times, and so far it has come back to new highs. That is not a promise it always will.</li>
+<li>Nobody can guarantee a price. Anyone who does is selling something.</li>
+<li>It is young, only since 2009. Rules and laws are still being written, including in Ghana. Check the current rules and use trusted platforms.</li>
+<li>Only use money you can leave alone for years. Never your rent, food, or school fee money.</li>
+</ul></div>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>Bitcoin was created in 2009 after the 2008 bank bailouts.</li>
+<li>It runs on a blockchain, a shared notebook nobody owns.</li>
+<li>Only 21 million will ever exist, so it is scarce. The cedi can be made without limit.</li>
+<li>One bitcoin splits into 100 million sats, so anyone can start small.</li>
+<li>Bitcoin is the new money. It swings in price, so go slow, stay safe, and think in years.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"Who created Bitcoin?",c:"Satoshi Nakamoto, a name used by a person or group whose identity is unknown",x:["A bank","The government of Ghana","A big tech company"],w:"Nobody knows who Satoshi really is."},
+ {q:"When did the Bitcoin network start?",c:"2009",x:["1971","1999","2021"],w:"Bitcoin started on January 3, 2009."},
+ {q:"What is a blockchain?",c:"A shared digital notebook that everyone can check and nobody can erase",x:["A chain of banks","A password","A video game"],w:"It is a shared ledger that thousands of computers keep identical."},
+ {q:"What does “decentralized” mean?",c:"No single boss or company is in charge",x:["One company runs it","It lives inside a bank","It is against the law"],w:"Many people share control and no single one can change the rules."},
+ {q:"How many bitcoin will ever exist?",c:"21 million",x:["Unlimited","1 billion","100 million"],w:"The limit is 21 million, written into the code."},
+ {q:"Why does the 21 million limit matter?",c:"It makes bitcoin scarce, and nobody can create more",x:["It makes bitcoin free","It makes bitcoin printed on paper","It makes bitcoin illegal"],w:"Scarcity is a big reason people call Bitcoin digital gold."},
+ {q:"What is the halving?",c:"About every four years, the amount of new bitcoin created is cut in half",x:["The price is cut in half","Your wallet splits in two","Half of all coins are deleted"],w:"The halving keeps new supply shrinking."},
+ {q:"What is a “sat”?",c:"The smallest piece of a bitcoin. 100 million sats make 1 bitcoin",x:["A test","A bank rule","A type of loan"],w:"You can own a piece of Bitcoin with very little money."},
+ {q:"Which one is true about the supply of cedis and the supply of bitcoin?",c:"More cedis can be created, but bitcoin is capped at 21 million",x:["Both are capped","Both can be created without limit","Bitcoin can be created by the government at any time"],w:"This difference is the heart of why Bitcoin is called the new money."},
+ {q:"Which statement is honest?",c:"Bitcoin's price swings a lot, so only use money you can leave alone for years",x:["Bitcoin only goes up","Bitcoin has no risk","Bitcoin is the same as a savings account"],w:"Volatility is real. Use money you can afford to leave alone."}
+ ]},
+
+{id:'s5', title:"STACK, DON'T TRADE", short:'Stack, don\'t trade', mins:12,
+ sub:"The winning plan is simple: collect more Bitcoin over time and keep it. Here is why accumulating beats trading.",
+ html:`
+<div class="box story"><h4>Story: Yaw the Trader and Efua the Stacker</h4>
+<p>Two friends, Yaw and Efua, both started with GH₵200 a month to put into Bitcoin.</p>
+<p>Yaw was excited. He watched the price all day. He bought when it jumped, sold when it dipped, jumped into small coins his friends were hyping, and even borrowed once to "make a bigger move." Some days he won. Most days he stressed. After two years he had less Bitcoin than when he began, and a loan to pay back.</p>
+<p>Efua did something boring. On the first of every month she bought GH₵200 of Bitcoin. She never checked the price during the day. When the price dropped, she kept buying. When it rose, she kept buying. After two years she had a growing pile of Bitcoin, no debt, and no sleepless nights.</p>
+<p>Both wanted to build wealth. Only one built a habit that works.</p></div>
+
+<div class="box big"><p>STACK SATS. HOLD. REPEAT.</p><small>The goal is not to win each week. The goal is to own more Bitcoin every year.</small></div>
+
+<h3>Trading vs. stacking</h3>
+<p>[[trading|Trading]] means buying and selling again and again, trying to catch small price moves. [[stacking|Stacking]] means steadily collecting more Bitcoin and keeping it.</p>
+<div class="scroll"><table>
+<tr><th></th><th>Trading</th><th>Stacking</th></tr>
+<tr><td>Goal</td><td>Win quick cedis</td><td>Own more Bitcoin over time</td></tr>
+<tr><td>Skill needed</td><td>Guess the price right again and again</td><td>Show up and be patient</td></tr>
+<tr><td>Stress</td><td>High. Watching charts all day</td><td>Low. A simple routine</td></tr>
+<tr><td>Who you compete against</td><td>Professionals with fast computers and inside tools</td><td>Nobody. Only your own habit</td></tr>
+<tr><td>Fees and taxes</td><td>Pay on every move</td><td>Few moves, few fees</td></tr>
+<tr><td>Typical result</td><td>Most traders lose money</td><td>Steady growth in what you own</td></tr>
+</table></div>
+
+<h3>Why trading is a trap</h3>
+<ul>
+<li><strong>Nobody can predict short-term prices.</strong> Not influencers, not groups, not apps.</li>
+<li><strong>The other side of your trade is often a professional.</strong> You are playing a game against people with more tools.</li>
+<li><strong>Fees add up.</strong> Every buy and sell costs something, and small moves can be eaten up.</li>
+<li><strong>Emotions beat plans.</strong> People buy when excited and sell when scared, which is the exact wrong order.</li>
+<li><strong>Altcoins are a minefield.</strong> Thousands of coins exist, and many go to zero. Many are built to take your money, as a [[rug-pull]] does. Stick to Bitcoin.</li>
+<li><strong>Borrowing makes it worse.</strong> [[leverage|Leverage]] can erase everything in a day.</li>
+</ul>
+
+<h3>The stacker's method</h3>
+<ol>
+<li><strong>Decide an amount you can keep up.</strong> It can be GH₵20 or GH₵2,000. Smaller and steady beats big and sudden.</li>
+<li><strong>Pick a schedule.</strong> Every week or every payday. This is called [[dollar-cost-averaging|dollar-cost averaging]] (DCA): you buy the same amount of money's worth on a regular schedule, whatever the price.</li>
+<li><strong>Count in sats, not cedis.</strong> Ask "How many sats do I own?" instead of "What is my profit today?" The cedi price of Bitcoin will bounce around. Your sats only go up when you stack.</li>
+<li><strong>Hold for years.</strong> Think in 4-year blocks, which is about one halving cycle. This is what the community means by [[hodl|HODL]].</li>
+<li><strong>When the price falls, stay calm.</strong> A falling price means each cedi buys more sats. To a stacker, a dip is a sale.</li>
+<li><strong>Move your bitcoin to your own wallet as your stack grows.</strong> See Section 6.</li>
+</ol>
+
+<div class="box simple"><h4>Why a price drop can help a stacker</h4>
+<p>If you buy GH₵100 of Bitcoin every week, then when the price is low you get <em>more</em> sats for your GH₵100, and when the price is high you get fewer. Over time your [[average-cost]] smooths out. The formula is simple:</p>
+<div class="formula">Total money spent ÷ total bitcoin you own = your average cost</div>
+<p>Try the Stack Lab to see this with your own numbers.</p>
+<div class="row" style="margin-bottom:0"><button class="btn" data-go="calc">Open the Stack Lab →</button></div></div>
+
+<h3>Be honest about what DCA can and cannot do</h3>
+<div class="box warn"><h4>No guarantees</h4>
+<p>Stacking does not promise profit in the short run. If you stop after the price has crashed, you could be behind. Bitcoin has had several drops of 70% or more. The stacker's edge is time: so far, people who kept stacking and held for several years have come out well, but nobody can promise the future. Use only money you can leave alone.</p></div>
+
+<h3>Your three rules</h3>
+<ol>
+<li><strong>Stack, do not trade.</strong></li>
+<li><strong>No borrowing, ever, to buy.</strong></li>
+<li><strong>Bitcoin first. Ignore the shiny coins.</strong></li>
+</ol>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>The goal is to own more Bitcoin every year, not to win every week.</li>
+<li>Most traders lose. Stackers build a habit that works while they sleep.</li>
+<li>Buy a small fixed amount on a schedule (DCA) and keep going in good times and bad.</li>
+<li>Count in sats. A price drop gives you more sats for your cedis.</li>
+<li>No borrowing, no altcoin hype, think in years.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"What is stacking?",c:"Steadily collecting more bitcoin over time and keeping it",x:["Buying and selling many times a day","Borrowing to buy lots of coins at once","Trading altcoins for quick profit"],w:"Stacking is about accumulating Bitcoin, not guessing short-term prices."},
+ {q:"What is trading?",c:"Buying and selling again and again to try to catch small price moves",x:["Saving a little every week and holding","Sending money to family","Mining new bitcoin"],w:"Trading is a hard game and most people who play lose."},
+ {q:"Why do most traders lose?",c:"Prices are hard to predict, fees add up, and emotions lead to buying high and selling low",x:["Trading is illegal","Bitcoin cannot be sold","Banks stop them"],w:"A calm routine beats guessing."},
+ {q:"What does DCA (dollar-cost averaging) mean?",c:"Buying a small, fixed amount on a regular schedule no matter the price",x:["Putting all your money in on the highest day","Selling a little every day","Borrowing to buy more"],w:"Steady buying removes the stress of guessing the perfect day."},
+ {q:"If you buy the same amount every week and the price falls, what happens?",c:"Your money buys more sats that week",x:["You buy fewer sats","You lose all your sats","Nothing, you cannot buy"],w:"That is why a dip can feel like a sale to a stacker."},
+ {q:"A good stacker measures success in...",c:"How many sats or how much bitcoin they own",x:["How many times they traded today","How many coins their friends hype","How much they borrowed"],w:"Counting sats keeps your eyes on the real goal."},
+ {q:"What does HODL mean?",c:"Holding your bitcoin through the ups and downs instead of selling in panic",x:["Selling right after buying","Trading hourly","Giving bitcoin to a stranger"],w:"It started as a typo for “hold” and became a motto."},
+ {q:"Which of these is one of the three rules of this course?",c:"No borrowing to buy",x:["Always chase new coins","Sell when the price drops","Trade every day"],w:"Borrowing to bet is called leverage. It can wipe you out."},
+ {q:"A friend says: “Send me GH₵2,000 and I'll flip it into GH₵6,000 by Friday.” What do you do?",c:"Say no. It is a scam or a gamble",x:["Send half to test","Send it all","Tell everyone to join"],w:"Guaranteed fast profits from a stranger are a classic scam."},
+ {q:"How long should a stacker think ahead?",c:"Years, about 4-year blocks",x:["Hours","Days","One week"],w:"Time is the stacker's edge."}
+ ]},
+
+{id:'s6', title:"KEEP IT SAFE & YOUR GAME PLAN", short:'Safety & plan', mins:12,
+ sub:"How to hold Bitcoin safely, how to spot scams, and a simple plan to get started.",
+ html:`
+<div class="box story"><h4>Story: Kojo Gets Got</h4>
+<p>Kojo's cousin Esi got a WhatsApp message from a number she did not know. A friendly woman said she ran an "investment club." She even shared screenshots of people turning GH₵500 into GH₵5,000.</p>
+<p>"Send me GH₵500 on MoMo," she said, "and I'll send back GH₵5,000 within an hour. Only a few spots left."</p>
+<p>Esi was tempted. She sent it. The number went silent. GH₵500, gone, with no way back.</p>
+<p>When Kojo heard, he sat her down. "Look at what they told you. Guaranteed. Fast. Only a few spots. A stranger. Money first. That is every red flag at once." Esi learned an expensive lesson. You can learn it for free.</p></div>
+
+<h3>How do you get Bitcoin?</h3>
+<p>Most people buy on an [[exchange]], which is like a store for coins. You create an account, show your ID, connect a payment method, and buy. Choose well-known, reputable platforms. Rules in Ghana are still developing, so check what is allowed and which platforms are trusted <em>before</em> you start, and never use a platform just because a stranger sent you a link.</p>
+<p>Start with a small amount while you learn. Buy a little, send it to a wallet, and practice. Mistakes are cheap when the amount is small.</p>
+
+<h3>Wallets and keys: the most important part</h3>
+<p>A [[wallet]] is an app or device that holds your keys. The coins live on the [[blockchain]]. Your keys are what prove they are yours.</p>
+<ul>
+<li>Your [[private-key]] is a long secret code that lets you spend your bitcoin. Whoever has it controls the coins.</li>
+<li>Your [[seed-phrase]] is a list of 12 or 24 words that can rebuild your wallet. <strong>Write it on paper. Hide it. Never take a photo of it. Never type it into a website. Never tell anyone, ever.</strong></li>
+<li>[[self-custody]] means you hold your own keys. A [[hardware-wallet]] is a small device that keeps them offline and away from hackers.</li>
+</ul>
+<div class="box simple"><h4>Say it simple</h4><p><strong>"Not your keys, not your coins."</strong> If a company holds your keys, you are trusting the company. If you hold your keys, you are in control. That is power, and it comes with responsibility. If you lose your seed phrase, nobody can get it back for you.</p></div>
+
+<h3>Other coins: know what they are</h3>
+<ul>
+<li>An [[altcoin]] is any coin that is not Bitcoin. Thousands exist and many will go to zero.</li>
+<li>A [[stablecoin]] is built to stay near one US dollar. It can be useful for moving money, but it is not scarce, it does not grow, and it is not Bitcoin. For accumulating, this course keeps your focus on Bitcoin.</li>
+</ul>
+
+<h3>Scam red flags</h3>
+<p>Ghana has seen big investment schemes collapse and many MoMo fraud calls. Here is your checklist:</p>
+<ul>
+<li>"Guaranteed" profits or "double your money."</li>
+<li>Pressure: "Act now! Only 3 spots left!"</li>
+<li>A stranger or a new "friend" asking you to send money first.</li>
+<li>Anyone asking for your seed phrase, private key, MoMo PIN, or a code sent to your phone. <strong>Real support never asks.</strong></li>
+<li>Links in texts, WhatsApp, or DMs. This is [[phishing]]: fake sites made to look real.</li>
+<li>Brand-new coins with huge promises. They can be a [[rug-pull]].</li>
+<li>Pay-the-old-with-the-new setups, called a [[ponzi-scheme]].</li>
+</ul>
+<p>The rule: <strong>if it sounds too good to be true, it is.</strong></p>
+
+<h3>Your game plan</h3>
+<ol>
+<li><strong>Know your numbers.</strong> Write down your income and expenses.</li>
+<li><strong>Start your emergency fund</strong> in cedis (one month of costs first).</li>
+<li><strong>Deal with high-cost debt</strong> like quick loan apps first.</li>
+<li><strong>Pick an amount and a schedule.</strong> Even GH₵50 a week counts. Buy Bitcoin on schedule with [[dollar-cost-averaging|DCA]].</li>
+<li><strong>Protect it.</strong> Turn on two-factor security. Write your seed phrase on paper. When your stack grows, move it to your own wallet or a [[hardware-wallet]].</li>
+<li><strong>Think in years, not days.</strong> Ignore the daily noise.</li>
+<li><strong>Teach somebody.</strong> The more people around you who understand money, the stronger your community.</li>
+</ol>
+<div class="box warn"><h4>Important</h4><p>This course is education. It is not [[financial-advice]]. Nobody here is telling you what to buy or how much. Talk to a licensed professional about your own situation and never put in money you cannot afford to leave alone.</p></div>
+
+<h3>Full circle</h3>
+<p>You began with Kwame and his tomatoes. Now you know what money is, why the cedi loses power over time, how to save and protect what you earn, why Bitcoin is the new money, and why the winning plan is to stack and hold, not to trade. Your next move: <strong>learn first, start small, stack steadily, and keep your keys safe.</strong></p>
+
+<div class="box take"><h4>Key takeaways</h4><ul>
+<li>Use known, reputable platforms and start with a small amount.</li>
+<li>Your keys control your coins. Never share your seed phrase.</li>
+<li>Guarantees, pressure, and strangers are scam red flags.</li>
+<li>Build the basics first: emergency fund and no high-cost debt.</li>
+<li>Stack steadily and think in years.</li>
+</ul></div>
+`,
+ quiz:[
+ {q:"What does a crypto wallet really hold?",c:"Your keys, which prove you control your coins",x:["Coins, like cash in a pocket","Your bank card","Your ID"],w:"The coins live on the blockchain. The wallet holds the keys to reach them."},
+ {q:"What is a seed phrase?",c:"A 12 or 24 word backup that gives full access to your wallet, so keep it secret",x:["A password you can share with support","A nickname for your account","A website"],w:"Whoever has your seed phrase has your bitcoin. Never share it."},
+ {q:"“Not your keys, not your coins” means...",c:"If someone else holds the keys, they control the coins",x:["Keys are free","Coins are made of metal","If you lose your keys you get new ones"],w:"Holding your own keys is called self-custody."},
+ {q:"Where should you write your seed phrase?",c:"On paper, hidden in a safe place",x:["In a photo on your phone","In a WhatsApp message to yourself","On a website for backup"],w:"Photos and messages can be hacked. Paper hidden well cannot."},
+ {q:"What is a stablecoin?",c:"A crypto built to stay near one US dollar, but it is not scarce and it is not Bitcoin",x:["Another name for Bitcoin","A coin that only goes up","A type of loan"],w:"Stablecoins are useful for moving dollars, but they do not give you scarce money."},
+ {q:"Which one is a scam red flag?",c:"“Guaranteed” returns or “double your money fast”",x:["A slow, clear explanation of the risks","Fees written down clearly","A warning that you can lose money"],w:"No real investment can guarantee profit."},
+ {q:"A stranger on WhatsApp says: “Send GH₵500 on MoMo and I'll send back GH₵5,000.” What is your best move?",c:"Ignore it and block them. It is a scam",x:["Send GH₵500","Send GH₵100 to test","Ask friends to send too"],w:"Send-first, big-return offers from strangers are scams."},
+ {q:"What is phishing?",c:"Fake messages or websites designed to trick you into giving up passwords or keys",x:["A fishing trip","A type of wallet","A bank fee"],w:"Never click links in surprise messages and never type your seed phrase anywhere."},
+ {q:"What is a smart first move before buying Bitcoin?",c:"Build a small emergency fund and handle high-cost debt",x:["Borrow money to buy more","Tell everyone you know","Quit your job"],w:"Cover the basics first, then stack only money you can leave alone."},
+ {q:"How should a new person start?",c:"Learn first, start with a small amount, and keep your keys safe",x:["Put in everything at once","Follow a stranger's advice","Buy ten coins at once"],w:"Small steps and safe habits beat big bets."}
+ ]}
+];
+
+/* Final exam: 30 questions covering everything */
+const EXAM = [
+ {q:"Why was money invented?",c:"To fix the problem that barter needs a perfect match of wants",x:["To make governments rich","To replace bananas","To help banks make loans"],w:"Money lets us trade with anyone, not just people who want what we have."},
+ {q:"The three jobs of money are...",c:"Medium of exchange, store of value, unit of account",x:["Print, copy, and send","Save, spend, and borrow","Earn, lend, and tax"],w:"Store of value is the job that matters most for building wealth."},
+ {q:"Which traits make good money?",c:"Scarce, durable, portable, divisible, and trusted",x:["Heavy, rare, and shiny","Printed by a government","Green and flat"],w:"These five traits are the scorecard for any money."},
+ {q:"What does “fiat” money mean?",c:"Value comes from government decree and trust, not from gold",x:["It is backed by gold","It is made of paper","It is only used online"],w:"The cedi and the dollar are fiat."},
+ {q:"Which of these can increase the supply of cedis?",c:"The government and the Bank of Ghana",x:["Nobody can","Market traders","Your phone"],w:"Fiat supply is not fixed."},
+ {q:"What happened to the old cedi in 2007?",c:"Zeros were cut off after it lost so much value",x:["It became gold","It was tied to bitcoin","It was banned"],w:"Ten thousand old cedis became one new cedi."},
+ {q:"Inflation is...",c:"When prices rise and the same money buys less",x:["When prices fall","When banks pay more interest","When wages double"],w:"Same money, less stuff."},
+ {q:"If it takes more cedis to buy one dollar, the cedi has...",c:"Weakened against the dollar",x:["Strengthened","Become gold","Disappeared"],w:"That is a higher exchange rate."},
+ {q:"At 20% yearly inflation, cash loses half of its buying power in about...",c:"3.6 years",x:["36 years","20 years","Never"],w:"72 ÷ 20 = 3.6 years."},
+ {q:"Why does keeping lots of cash in a tin or only in cedis hurt over time?",c:"Inflation weakens its buying power",x:["Thieves always find it","Cash grows in the dark","Cedis expire"],w:"Cash is for bills, not for building wealth."},
+ {q:"What is a susu?",c:"A traditional way to save by setting money aside regularly",x:["A loan app","A phone company","A crypto coin"],w:"It is the “pay yourself first” idea."},
+ {q:"What is an emergency fund for?",c:"Surprises like sickness or a repair",x:["Parties","Hyped coins","Paying other loans"],w:"It keeps surprises from becoming debt."},
+ {q:"Which one is the best description of a liability?",c:"Something that takes money out of your pocket",x:["Something that makes you money","Something that is free","Something shiny"],w:"Assets grow. Liabilities drain."},
+ {q:"What is a major danger of quick loan apps?",c:"Very high fees and short deadlines",x:["They are always free","They pay you interest","They only lend to the rich"],w:"Always check the total cost before borrowing."},
+ {q:"Why should you never borrow to buy crypto?",c:"If the price falls you still owe the full loan",x:["It is impossible","Crypto is free","Loans make coins safer"],w:"That is leverage and it can wipe you out."},
+ {q:"Why was Bitcoin created?",c:"As money no bank or government can control, after the 2008 bailouts",x:["To make banks richer","To replace the internet","To pay taxes"],w:"The first block even carried a headline about bank bailouts."},
+ {q:"What is a blockchain?",c:"A shared notebook that thousands of computers keep identical",x:["A chain of banks","A type of wallet","A phone app"],w:"Cheating gets caught because copies do not match."},
+ {q:"How many bitcoin will ever exist?",c:"21 million",x:["Unlimited","100 billion","1 million"],w:"This limit is written into the code."},
+ {q:"What does mining do?",c:"Adds new blocks, issues new bitcoin, and protects the network",x:["Digs for gold","Prints cedis","Closes accounts"],w:"Mining keeps the notebook honest."},
+ {q:"What is a sat?",c:"One 100-millionth of a bitcoin",x:["A bank fee","A coin made of silver","A kind of wallet"],w:"You can own Bitcoin with a small amount."},
+ {q:"Compared to the cedi, Bitcoin is different because...",c:"Its supply is capped and no one can create more",x:["It is printed by the government","It has more zeros","It is backed by gold"],w:"Scarcity is the core difference."},
+ {q:"Which of these is a real risk of Bitcoin?",c:"Its price can swing 70% or more in the short run",x:["It is made of paper","It can be printed at will","It expires after a year"],w:"Only use money you can leave alone for years."},
+ {q:"What is trading?",c:"Buying and selling over and over to catch small price moves",x:["Holding for years","Saving each week","Sending money home"],w:"Most people who try it lose."},
+ {q:"What is stacking?",c:"Steadily collecting more bitcoin over time and keeping it",x:["Selling every dip","Buying only altcoins","Borrowing to buy"],w:"The goal is to own more bitcoin each year."},
+ {q:"A stacker counts success in...",c:"Sats or bitcoin owned",x:["Daily profit","Likes on a post","Number of trades"],w:"Sats go up when you stack."},
+ {q:"When the price drops, a stacker...",c:"Keeps buying their usual amount and gets more sats",x:["Sells everything","Borrows to buy double","Stops forever"],w:"A dip is a sale for the stacker."},
+ {q:"What is DCA?",c:"Buying a small fixed amount on a regular schedule",x:["Buying everything on the highest day","Selling a little each day","Borrowing weekly"],w:"It removes the stress of guessing."},
+ {q:"“Not your keys, not your coins” is a reminder about...",c:"Self-custody",x:["Paying taxes","Mining","Inflation"],w:"If someone else holds your keys, they control the coins."},
+ {q:"Which person is asking for your seed phrase?",c:"A scammer. Real support never asks",x:["Wallet support","Your bank","An exchange"],w:"Never share your seed phrase."},
+ {q:"What are the three rules of the stacker?",c:"Stack do not trade, no borrowing, Bitcoin first",x:["Trade daily, borrow, chase coins","Sell on dips, buy on rallies, repeat","Follow hype, copy friends, skip safety"],w:"Simple rules protect you."}
+];
+
+/* =========================================================
+   APP CODE
+   ========================================================= */
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const LS_KEY='bwsGhanaBitcoinCourse';
+let state={scores:{},view:'welcome',name:'',fs:18,theme:'dark'};
+try{ const raw=localStorage.getItem(LS_KEY); if(raw) state=Object.assign(state,JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(LS_KEY,JSON.stringify(state)); }catch(e){} }
+
+const seen=new Set();
+function tok(html){
+  return html.replace(/\[\[([a-z0-9-]+)(?:\|([^\]]+))?\]\]/g,(m,k,l)=>{
+    const t=T[k];
+    if(!t){ console.warn('Missing glossary term:',k); return l||k; }
+    const first=!seen.has(k); seen.add(k);
+    return `<a href="#" class="term${first?' new':''}" data-term="${k}" role="button" aria-label="${(l||t[0]).replace(/"/g,'')}: tap for the meaning">${l||t[0]}</a>`;
+  });
+}
+
+const app=$('#app');
+function buildWelcome(){
+  return tok(`
+<h1>BITCOIN: THE NEW MONEY</h1>
+<p class="sub">A starter course on money, inflation, and Bitcoin, made for our people in Ghana.</p>
+<p class="meta">Block Wall Street · About 1 hour · 6 sections · a quiz after each section · Stack Lab · Final Exam</p>
+
+<p>Money is the one game everybody plays, and almost nobody explains the rules. This course is that talk.</p>
+<p>You will learn where money comes from, why the cedi and other government money lose buying power through [[inflation]], how to save smart, and why <strong>Bitcoin is the new money</strong>. Most important, you will learn the winning plan: <strong>accumulate, do not trade.</strong></p>
+
+<div class="box big"><p>STACK. HOLD. DON'T TRADE.</p><small>Own more Bitcoin every year. That is the whole game.</small></div>
+
+<p>Everything is explained in plain, simple English. If a word is new, tap it. No grades: the quizzes are to make the lessons stick, and you can retry them as many times as you like.</p>
+
+<div class="box simple"><h4>How the gold words work</h4>
+<p>When you see a word with a <span class="demo">gold highlight</span>, it is a new word. <strong>Tap it</strong> to see what it means in plain English. Then tap the big gold <strong>Back to where I was reading</strong> button, and you return to the same spot.</p>
+<p>The <strong>Glossary</strong> button at the top lets you look up any word at any time.</p></div>
+
+<h3>Your roadmap</h3>
+<ul class="map" id="map"></ul>
+<p>Bonus: the <strong>Stack Lab</strong> lets you test how stacking works with your own numbers in cedis. After all six sections, take the <strong>Final Exam</strong> to earn your certificate.</p>
+<div class="row"><button class="btn" data-go="s1">Start Section 1 →</button></div>
+`);
+}
+function buildSection(sec,idx){
+  const prev=idx>0?SECTIONS[idx-1]:null, next=idx<SECTIONS.length-1?SECTIONS[idx+1]:null;
+  return `
+<h2 class="st">${idx+1}. ${sec.title}</h2>
+<p class="sub">${sec.sub}</p>
+<p class="meta">Section ${idx+1} of ${SECTIONS.length} · About ${sec.mins} minutes with the quiz</p>
+<a class="jump" href="#quiz-${sec.id}" data-jump="${sec.id}">Skip to the quiz ↓</a>
+${tok(sec.html)}
+<section class="quiz" id="quiz-${sec.id}"></section>
+<div class="pager">
+  <button class="btn ghost" data-go="${prev?prev.id:'welcome'}">← ${prev?'Back: '+prev.short:'Back to start'}</button>
+  <button class="btn" data-go="${next?next.id:'calc'}">${next?'Next: '+next.short+' →':'Next: Stack Lab →'}</button>
+</div>`;
+}
+
+/* ---------- Stack Lab ---------- */
+function buildCalc(){
+  return tok(`
+<h2 class="st">STACK LAB</h2>
+<p class="sub">Play with it. See what happens when you buy a little Bitcoin every week, in good markets and bad ones.</p>
+<p class="meta">Practice tool · Not graded · Nothing here predicts the future</p>
+
+<div class="box simple"><h4>What you are testing</h4>
+<p>You put in the same amount of cedis every week. The tool shows how many sats you collect if the price of Bitcoin ends up higher, the same, lower, or much lower. Watch what happens to your <strong>sats</strong>.</p></div>
+
+<div class="widget">
+<h4>THE STACKER'S CALCULATOR</h4>
+<div class="fields">
+ <label>Cedis you put in each week (GH₵)<input type="number" id="cAmt" value="100" min="1" step="10"></label>
+ <label>How many years: <b id="cYv">4</b><input type="range" id="cY" min="1" max="10" value="4"></label>
+ <label>Cedis per 1 US dollar today<input type="number" id="cFx" value="11" min="1" step="0.5"><span class="help">Type today's rate from your bank or MoMo app.</span></label>
+ <label>Price of 1 bitcoin today (US$)<input type="number" id="cP0" value="100000" min="1" step="1000"><span class="help">Type today's price from a trusted price site or your exchange.</span></label>
+ <label>Yearly cedi inflation (%): <b id="cIv">15</b><input type="range" id="cI" min="0" max="50" value="15"></label>
+</div>
+<div class="chips"><span>The price in the last week ends up:</span>
+ <button class="chip" data-mult="0.25">Down 75%</button>
+ <button class="chip" data-mult="0.5">Down 50%</button>
+ <button class="chip on" data-mult="1">Same as today</button>
+ <button class="chip" data-mult="2">2× higher</button>
+ <button class="chip" data-mult="4">4× higher</button>
+</div>
+<p class="help">The tool moves the price in a straight line from today's price to the ending price. Real prices are bumpy. The point is to see the idea, not predict.</p>
+<div id="stackOut" aria-live="polite"></div>
+</div>
+
+<h3>What did you notice?</h3>
+<ol>
+<li>When the price ends <strong>lower</strong>, you own <strong>more sats</strong>, because your weekly cedis bought more each time. A stacker can win the sat count even when the price falls.</li>
+<li>When the price ends <strong>higher</strong>, your cedi value is bigger, but you own fewer sats than in the crash case, because each week cost more.</li>
+<li>In every case you keep stacking. That is the habit that matters.</li>
+<li>Compare the "cash in a tin" number. Cash sitting still loses buying power every year.</li>
+</ol>
+<div class="box warn"><h4>Remember</h4><p>This tool uses made-up price paths. It does not show real results. Bitcoin can go down and stay down for a long time. Stacking is not a promise of profit. Use only money you can leave alone for years. This is education, not financial advice.</p></div>
+<div class="pager"><button class="btn ghost" data-go="s6">← Back to Section 6</button><button class="btn" data-go="exam">Take the Final Exam →</button></div>
+`);
+}
+function initCalc(){
+  let mult=1;
+  const num=(id,d)=>{ const v=parseFloat($(id).value); return isFinite(v)&&v>0?v:d; };
+  const f0=n=>Math.round(n).toLocaleString();
+  function sim(amt,weeks,fx,p0,m,inf){
+    let coins=0,put=0,tin=0;
+    for(let w=0;w<weeks;w++){
+      const price=p0*(1+(m-1)*(w/weeks));
+      coins+=(amt/fx)/price; put+=amt;
+      tin+=amt/Math.pow(1+inf/100,(weeks-w)/52);
+    }
+    return {coins,put,tin,endPrice:p0*m};
+  }
+  function run(){
+    const amt=num('#cAmt',100), years=+$('#cY').value, fx=num('#cFx',11), p0=num('#cP0',100000), inf=+$('#cI').value;
+    $('#cYv').textContent=years; $('#cIv').textContent=inf;
+    const weeks=Math.round(years*52);
+    const r=sim(amt,weeks,fx,p0,mult,inf);
+    const valueGHS=r.coins*r.endPrice*fx, pl=valueGHS-r.put, up=pl>=0;
+    const avgUsd=(r.put/fx)/r.coins;
+    const rows=[0.25,0.5,1,2,4].map(m=>{
+      const s=sim(amt,weeks,fx,p0,m,inf);
+      const lab=m<1?'Down '+Math.round((1-m)*100)+'%':(m===1?'Same as today':m+'× higher');
+      return `<tr><td>${lab}</td><td>${f0(s.coins*1e8)}</td><td>GH₵${f0(s.coins*s.endPrice*fx)}</td></tr>`;
+    }).join('');
+    $('#stackOut').innerHTML=`
+<div class="stats">
+ <div class="stat"><small>Total cedis you put in</small><b>GH₵${f0(r.put)}</b><em>${weeks} weekly buys</em></div>
+ <div class="stat"><small>Sats you would own</small><b>${f0(r.coins*1e8)}</b><em>${r.coins.toFixed(r.coins<1?6:4)} bitcoin</em></div>
+ <div class="stat"><small>Your average cost per bitcoin</small><b>$${f0(avgUsd)}</b><em>Total spent ÷ total coins</em></div>
+ <div class="stat"><small>Worth at the end (same exchange rate)</small><b>GH₵${f0(valueGHS)}</b><em>at $${f0(r.endPrice)} per bitcoin</em></div>
+ <div class="stat"><small>Profit or loss</small><b class="${up?'up':'down'}">${up?'+':'-'}GH₵${f0(Math.abs(pl))}</b><em>${up?'ahead of':'behind'} what you put in</em></div>
+ <div class="stat"><small>Same cedis kept as cash in a tin</small><b class="down">GH₵${f0(r.tin)}</b><em>buying power left after ${inf}% yearly inflation, measured in money from the day each cedi was saved</em></div>
+</div>
+<h3>Same plan, five different futures</h3>
+<div class="scroll"><table><tr><th>If the price ends...</th><th>Sats you own</th><th>Worth at the end</th></tr>${rows}</table></div>
+<p class="cap">Made-up price paths for learning. Past and future results are not promises.</p>`;
+  }
+  $$('#v-calc input').forEach(i=>i.addEventListener('input',run));
+  $$('#v-calc .chip').forEach(c=>c.addEventListener('click',()=>{
+    mult=parseFloat(c.dataset.mult);
+    $$('#v-calc .chip').forEach(x=>x.classList.toggle('on',x===c)); run();
+  }));
+  run();
+}
+
+function buildExam(){
+  return `
+<h2 class="st">FINAL EXAM</h2>
+<p class="sub">30 questions covering the whole course. Take your time. Score 24 or more to earn your certificate.</p>
+<p class="meta">Covers Sections 1 to 6 · You can retake it as many times as you like</p>
+<div class="box simple"><h4>Before you start</h4><p>You can open the <strong>Glossary</strong> at any time. Questions and answers are shuffled each time you try.</p></div>
+<section class="quiz" id="quiz-exam"></section>
+<div class="pager"><button class="btn ghost" data-go="calc">← Back to Stack Lab</button><button class="btn" data-go="finish">Go to my results →</button></div>`;
+}
+function buildFinish(){
+  return `
+<h2 class="st">YOU MADE IT</h2>
+<p class="sub">You just learned more about money in an hour than most people are ever taught.</p>
+<div class="box"><h4>Your scores</h4><div id="scoreList"></div></div>
+<div class="box simple"><h4>Remember these six things</h4><ol>
+<li>Money is a trusted tool for trading, saving, and measuring prices, and the cedi and dollar are backed by trust, not gold.</li>
+<li>Inflation makes cash lose buying power, so do not let big savings sit still for years.</li>
+<li>Pay yourself first and build an emergency fund. Never borrow to buy crypto.</li>
+<li><strong>Bitcoin is the new money:</strong> scarce, open to anyone, and controlled by no one. It is also volatile, so go slow and use only money you can leave alone.</li>
+<li><strong>Stack, do not trade.</strong> Buy a small fixed amount on a schedule and hold for years.</li>
+<li>Guard your keys and your seed phrase. Never share them.</li></ol></div>
+<h3>Get your certificate</h3>
+<div id="certGate"></div>
+<div id="certWrap"></div>
+<div class="pager"><button class="btn ghost" data-go="exam">← Final Exam</button><button class="btn ghost" data-go="calc">Stack Lab</button><button class="btn ghost" id="openG2">Open the glossary</button></div>`;
+}
+
+function mount(){
+  const views=[];
+  views.push(`<div class="view" id="v-welcome">${buildWelcome()}</div>`);
+  SECTIONS.forEach((s,i)=>views.push(`<div class="view" id="v-${s.id}">${buildSection(s,i)}</div>`));
+  views.push(`<div class="view" id="v-calc">${buildCalc()}</div>`);
+  views.push(`<div class="view" id="v-exam">${buildExam()}</div>`);
+  views.push(`<div class="view" id="v-finish">${buildFinish()}</div>`);
+  app.innerHTML=views.join('');
+  $('#map').innerHTML=SECTIONS.map((s,i)=>`<li><button data-go="${s.id}"><span class="n">${i+1}</span><span class="t">${s.title.replace(/'/g,"’")}<small>${s.sub}</small></span><span class="m">~${s.mins} min</span></button></li>`).join('');
+  const pills=[['welcome','Start'],...SECTIONS.map((s,i)=>[s.id,(i+1)+'. '+s.short.replace(/'/g,"’")]),['calc','Stack Lab'],['exam','Final Exam'],['finish','Finish']];
+  $('#pills').innerHTML=pills.map(([id,l])=>`<button class="pill" data-go="${id}" data-pill="${id}">${l}</button>`).join('');
+  SECTIONS.forEach(s=>mountQuiz($('#quiz-'+s.id),s.id,'QUIZ: SECTION '+(SECTIONS.indexOf(s)+1),s.quiz,()=>{
+    const i=SECTIONS.indexOf(s), nx=SECTIONS[i+1];
+    return `<button class="btn" data-go="${nx?nx.id:'calc'}">${nx?'Next section →':'Next: Stack Lab →'}</button>`;
+  }));
+  mountQuiz($('#quiz-exam'),'exam','THE FINAL EXAM',EXAM,()=>`<button class="btn" data-go="finish">Go to my results →</button>`);
+  initWidgets();
+  initCalc();
+  buildGlossary();
+}
+
+function show(id,noScroll){
+  $$('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+id));
+  state.view=id; save();
+  if(!noScroll) window.scrollTo(0,0);
+  if(id==='finish') renderFinish();
+  refreshChrome();
+}
+function refreshChrome(){
+  $$('.pill').forEach(p=>{
+    const id=p.dataset.pill;
+    p.classList.toggle('on',id===state.view);
+    p.classList.toggle('done',state.scores[id]!==undefined);
+  });
+  const ids=[...SECTIONS.map(s=>s.id),'exam'];
+  const n=ids.filter(i=>state.scores[i]!==undefined).length;
+  $('#prog i').style.width=(n/ids.length*100)+'%';
+  const on=$('.pill.on'); if(on&&on.scrollIntoView) on.scrollIntoView({inline:'center',block:'nearest'});
+}
+document.addEventListener('click',e=>{
+  const go=e.target.closest('[data-go]');
+  if(go){ e.preventDefault(); show(go.dataset.go); return; }
+  const jp=e.target.closest('[data-jump]');
+  if(jp){ e.preventDefault(); $('#quiz-'+jp.dataset.jump).scrollIntoView({behavior:'smooth'}); return; }
+  const term=e.target.closest('a.term');
+  if(term){ e.preventDefault(); openGlossary(term.dataset.term,term); return; }
+});
+
+/* ---- quiz ---- */
+function shuffled(q){
+  const opts=[q.c,...q.x].map((t,i)=>({t,ok:i===0}));
+  for(let i=opts.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [opts[i],opts[j]]=[opts[j],opts[i]]; }
+  return opts;
+}
+function mountQuiz(el,key,title,Q,nextHtml){
+  const L=['A','B','C','D'];
+  let i=0, score=0;
+  function render(){
+    if(i>=Q.length) return result();
+    const q=Q[i]; q._o=shuffled(q);
+    el.innerHTML=`
+<h3>${title}</h3>
+<div class="qcount">Question ${i+1} of ${Q.length}</div>
+<div class="qbar"><i style="width:${i/Q.length*100}%"></i></div>
+<div class="qq">${q.q}</div>
+<div>${q._o.map((o,k)=>`<button class="opt" data-k="${k}"><span class="l">${L[k]}</span><span>${o.t}</span></button>`).join('')}</div>
+<div class="fb"></div>`;
+    $$('.opt',el).forEach(b=>b.addEventListener('click',()=>pick(+b.dataset.k)));
+  }
+  function pick(k){
+    const q=Q[i], ok=q._o[k].ok; if(ok) score++;
+    $$('.opt',el).forEach((b,j)=>{ b.disabled=true; if(q._o[j].ok) b.classList.add('right'); else if(j===k) b.classList.add('wrong'); });
+    $('.fb',el).innerHTML=`<div class="why ${ok?'good':'bad'}"><strong>${ok?'Correct.':'Not quite.'}</strong> ${q.w}</div><button class="btn nx">${i<Q.length-1?'Next question →':'See my score →'}</button>`;
+    const nx=$('.nx',el); nx.focus({preventScroll:true});
+    nx.addEventListener('click',()=>{ i++; render(); el.scrollIntoView({behavior:'smooth'}); });
+  }
+  function result(){
+    const prev=state.scores[key];
+    state.scores[key]=Math.max(prev||0,score); save(); refreshChrome();
+    const pct=score/Q.length;
+    let msg=pct>=.9?"You have got this locked in. That is real knowledge.":pct>=.7?"Solid work. A quick re-read of the parts you missed and you are there.":"No stress. Scroll up, re-read, and run it back. That is how it sticks.";
+    if(key==='exam') msg=score>=24?"You passed! Head to your results to get your certificate.":"You need 24 to pass. Review the sections you missed and try again. You can do it.";
+    el.innerHTML=`
+<h3>${key==='exam'?'EXAM DONE':'QUIZ DONE'}</h3>
+<div class="score">${score}<span style="font-size:2.2rem;color:var(--mute)"> / ${Q.length}</span></div>
+<p style="font-size:1.15rem">${msg}</p>
+<div class="row"><button class="btn ghost rt">Try again</button>${nextHtml()}</div>`;
+    $('.rt',el).addEventListener('click',()=>{ i=0; score=0; render(); el.scrollIntoView({behavior:'smooth'}); });
+  }
+  render();
+}
+
+/* ---- inflation widget ---- */
+function initWidgets(){
+  $$('[data-widget="inflation"]').forEach(w=>{
+    w.innerHTML=`<h4>THE INFLATION EATER</h4>
+<p>See what inflation does to cash sitting still. Move the sliders.</p>
+<label>Cash you put away: GH₵<input type="number" id="iA" value="1000" min="1" step="50"></label>
+<label>Years it sits: <b id="iYv">10</b><input type="range" id="iY" min="1" max="30" value="10"></label>
+<label>Yearly inflation: <b id="iRv">15</b>%<input type="range" id="iR" min="1" max="50" value="15" step="1"></label>
+<div class="out" id="iOut"></div>
+<p class="help">Example numbers only. Real inflation changes from year to year.</p>`;
+    const calc=()=>{
+      const a=Math.max(1,+$('#iA',w).value||0), y=+$('#iY',w).value, r=+$('#iR',w).value/100;
+      $('#iYv',w).textContent=y; $('#iRv',w).textContent=(r*100).toString();
+      const f=Math.pow(1+r,y), buys=a/f;
+      const $f=n=>'GH₵'+Math.round(n).toLocaleString();
+      $('#iOut',w).innerHTML=`After <strong>${y} years</strong> at <strong>${(r*100)}%</strong> inflation, your <strong>${$f(a)}</strong> will only buy what <strong>${$f(buys)}</strong> buys today. Something that costs ${$f(a)} now would cost about <strong>${$f(a*f)}</strong>. You lost <strong>${Math.round((1-1/f)*100)}%</strong> of your buying power without spending a pesewa.`;
+    };
+    $$('input',w).forEach(i=>i.addEventListener('input',calc)); calc();
+  });
+}
+
+/* ---- glossary ---- */
+const G=$('#glossary'); let gOpen=false, saved=null;
+function buildGlossary(){
+  const keys=Object.keys(T).sort((a,b)=>T[a][0].toLowerCase().localeCompare(T[b][0].toLowerCase()));
+  let last='', html='';
+  keys.forEach(k=>{
+    const [n,d,ex]=T[k], L=n[0].toUpperCase();
+    if(L!==last){ html+=`<div class="gletter" data-letter="${L}">${L}</div>`; last=L; }
+    html+=`<div class="gentry" id="g-${k}" data-name="${(n+' '+d).toLowerCase()}"><h4>${n}</h4><p>${d}</p>${ex?`<p class="ex"><strong>Example:</strong> ${ex}</p>`:''}</div>`;
+  });
+  $('#glist').innerHTML=html;
+}
+function openGlossary(key,fromEl){
+  saved={y:window.scrollY, el:fromEl||null};
+  gOpen=true; G.hidden=false; document.body.classList.add('lock');
+  $('#gsearch').value=''; filterG('');
+  $$('.gentry.target').forEach(x=>x.classList.remove('target'));
+  try{ history.pushState({g:1},''); }catch(e){}
+  G.scrollTop=0;
+  if(key){
+    const t=$('#g-'+key);
+    if(t){ t.classList.add('target'); requestAnimationFrame(()=>{ G.scrollTop=Math.max(0,t.offsetTop-110); }); }
+  }
+  $('#gback').textContent = saved.el ? '← Back to where I was reading' : '← Close glossary';
+  $('#gback').focus({preventScroll:true});
+}
+function closeGlossary(){
+  if(!gOpen) return;
+  gOpen=false; G.hidden=true; document.body.classList.remove('lock');
+  if(saved){
+    window.scrollTo(0,saved.y);
+    if(saved.el){
+      const el=saved.el; el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+      try{ el.focus({preventScroll:true}); }catch(e){}
+      setTimeout(()=>el.classList.remove('flash'),1800);
+    }
+  }
+}
+$('#gback').addEventListener('click',()=>{ if(history.state&&history.state.g){ history.back(); } else closeGlossary(); });
+window.addEventListener('popstate',()=>closeGlossary());
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&gOpen) $('#gback').click(); });
+function filterG(q){
+  q=q.trim().toLowerCase();
+  $$('.gentry').forEach(e=>e.style.display=(!q||e.dataset.name.includes(q))?'':'none');
+  $$('.gletter').forEach(l=>{
+    let n=l.nextElementSibling, show=false;
+    while(n&&n.classList.contains('gentry')){ if(n.style.display!=='none') show=true; n=n.nextElementSibling; }
+    l.style.display=show?'':'none';
+  });
+}
+$('#gsearch').addEventListener('input',e=>filterG(e.target.value));
+$('#openG').addEventListener('click',()=>openGlossary(null,null));
+document.addEventListener('click',e=>{ if(e.target.id==='openG2') openGlossary(null,null); });
+
+/* ---- finish + certificate ---- */
+function renderFinish(){
+  const rows=SECTIONS.map((s,i)=>`<p style="margin:.3rem 0"><strong>${i+1}. ${s.short.replace(/'/g,"’")}:</strong> ${state.scores[s.id]!==undefined?state.scores[s.id]+' / '+s.quiz.length:'<span style="color:var(--mute)">not taken yet</span>'}</p>`).join('');
+  const ex=state.scores.exam;
+  $('#scoreList').innerHTML=rows+`<p style="margin-top:.8rem"><strong>Final Exam:</strong> ${ex!==undefined?ex+' / '+EXAM.length:'<span style="color:var(--mute)">not taken yet</span>'}</p>`;
+  const passed=ex!==undefined&&ex>=24;
+  $('#certGate').innerHTML=passed
+    ?`<p>Congratulations! Type your name and tap the button.</p><div class="row"><input class="nameIn" id="nameIn" placeholder="Your name" aria-label="Your name" value=""><button class="btn" id="mkCert">Make my certificate</button></div>`
+    :`<p>Score 24 or more on the Final Exam to unlock your certificate. ${ex!==undefined?'Your best so far is '+ex+' out of '+EXAM.length+'. Review and try again.':'Take the exam when you are ready.'}</p><div class="row"><button class="btn" data-go="exam">Go to the Final Exam →</button></div>`;
+  if(passed) $('#nameIn').value=state.name||'';
+  $('#certWrap').innerHTML='';
+}
+document.addEventListener('click',e=>{
+  if(e.target.id!=='mkCert') return;
+  const name=($('#nameIn').value||'').trim()||'Student'; state.name=name; save();
+  const d=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  $('#certWrap').innerHTML=`<div class="cert"><h2>CERTIFICATE OF COMPLETION</h2><p>This certifies that</p><div class="nm"></div><p>completed <strong>Bitcoin: The New Money</strong><br>presented by Block Wall Street</p><p>Final Exam score: ${state.scores.exam} / ${EXAM.length} · ${d}</p></div><div class="row"><button class="btn" onclick="window.print()">Print certificate</button></div>`;
+  $('#certWrap .nm').textContent=name;
+});
+
+/* ---- toolbar ---- */
+function applyPrefs(){
+  document.documentElement.style.fontSize=state.fs+'px';
+  document.documentElement.setAttribute('data-theme',state.theme);
+}
+$('#fsm').addEventListener('click',()=>{ state.fs=Math.max(14,state.fs-1); applyPrefs(); save(); });
+$('#fsp').addEventListener('click',()=>{ state.fs=Math.min(28,state.fs+1); applyPrefs(); save(); });
+$('#theme').addEventListener('click',()=>{ state.theme=state.theme==='dark'?'light':'dark'; applyPrefs(); save(); });
+
+mount(); applyPrefs();
+show(state.view&&$('#v-'+state.view)?state.view:'welcome',true);
+</script>
+</body>
+</html>
